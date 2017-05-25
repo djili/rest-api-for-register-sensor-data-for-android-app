@@ -4,11 +4,11 @@ from bottle import request, route, run
 
 
 @route('/',method='POST')
-def index()
+def index():
 
      # getting data
      data=request.params.get('data')
-     print "your data = {data}".format(data=data)
+     print ('your data = {data}'.format(data))
 
      # establish a connection to the database
      connection = pymongo.MongoClient("mongodb://localhost")
@@ -22,7 +22,7 @@ def index()
      try:
          sensor.insert_one(data)
      except Exception as e:
-         print "Unexpected error:", type(e), e
+         print ("Unexpected error: {}",format(type(e)))
 
      return "sucess"
 
