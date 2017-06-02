@@ -8,7 +8,7 @@ def index():
 
      # getting data
      data=request.params.get('data')
-     print ('your data = {data}'.format(data))
+     print ('your data = {}'.format(data))
 
      # establish a connection to the database
      connection = pymongo.MongoClient("mongodb://localhost")
@@ -20,9 +20,11 @@ def index():
 
      # insert data
      try:
-         sensor.insert_one(data)
+         sen =sensor.insert_one(json.loads(data))
+         print(sen)
+         print(json.loads(data))
      except Exception as e:
-         print ("Unexpected error: {}",format(type(e)))
+         print (e)
 
      return "sucess"
 
