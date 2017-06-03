@@ -6,8 +6,8 @@ from bottle import request, route, run
 @route('/',method='POST')
 def index():
 
-     # getting data
-     data=request.params.get('data')
+     data=request.forms.get('requestBody')
+     x=request.forms
      print ('your data = {}'.format(data))
 
      # establish a connection to the database
